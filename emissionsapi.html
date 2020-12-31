@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,30 +11,31 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Installation" href="installation.html" /> 
+    <link rel="prev" title="Database" href="database.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -49,7 +49,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Emissions API
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Emissions API
           
 
           
@@ -72,6 +72,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -82,13 +83,16 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Python API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-emissionsapi.autoupdater">emissionsapi.autoupdater module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-emissionsapi.config">emissionsapi.config module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-emissionsapi.country_bounding_boxes">emissionsapi.country_bounding_boxes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#emissionsapi-country-shapes-module">emissionsapi.country_shapes module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-emissionsapi.db">emissionsapi.db module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-emissionsapi.download">emissionsapi.download module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-emissionsapi.preprocess">emissionsapi.preprocess module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-emissionsapi.web">emissionsapi.web module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-emissionsapi.utils">emissionsapi.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#emissionsapi-web-module">emissionsapi.web module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-emissionsapi">Module contents</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#emissions-api">Emissions API</a></li>
 </ul>
@@ -100,6 +104,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -138,7 +143,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Python API</li>
     
@@ -161,12 +166,86 @@
             
   <div class="section" id="python-api">
 <h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-emissionsapi.autoupdater">
+<span id="emissionsapi-autoupdater-module"></span><h2>emissionsapi.autoupdater module<a class="headerlink" href="#module-emissionsapi.autoupdater" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="emissionsapi.autoupdater.generate_intervals">
+<code class="sig-prename descclassname">emissionsapi.autoupdater.</code><code class="sig-name descname">generate_intervals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em>, <em class="sig-param"><span class="n">days</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.autoupdater.generate_intervals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator for intervals between start and end in days intervals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>datetime.datetime</em>) – Starting datetime for the intervals.</p></li>
+<li><p><strong>end</strong> (<em>datetime.datetime</em>) – End datetime for the intervals.</p></li>
+<li><p><strong>days</strong> (<em>int</em><em>, </em><em>optional</em>) – Days for each interval, defaults to 5</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yield</dt>
+<dd class="field-even"><p>Start and end date of the next interval.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emissionsapi.autoupdater.get_intervals_to_process">
+<code class="sig-prename descclassname">emissionsapi.autoupdater.</code><code class="sig-name descname">get_intervals_to_process</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session</span></em>, <em class="sig-param"><span class="n">table</span></em>, <em class="sig-param"><span class="n">exclude_existing</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.autoupdater.get_intervals_to_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all intervals with associated product files to process.
+Intervals with existing data will be skipped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQLAlchemy Session</p></li>
+<li><p><strong>table</strong> (<em>sqlalchemy.sql.schema.Table</em>) – Table to search for existing data.</p></li>
+<li><p><strong>ignore_existing</strong> (<em>bool</em><em>, </em><em>optional</em>) – Exclude existing intervals, defaults to True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Generator yielding the next interval.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>generator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emissionsapi.autoupdater.main">
+<code class="sig-prename descclassname">emissionsapi.autoupdater.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.autoupdater.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Entrypoint for running this as a module or from the binary.
+Triggers the autoupdater.
+The autoupdater will download and add all missing product files
+of the configured products and the configured interval to the database.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emissionsapi.autoupdater.single_file_update">
+<code class="sig-prename descclassname">emissionsapi.autoupdater.</code><code class="sig-name descname">single_file_update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session</span></em>, <em class="sig-param"><span class="n">product_file</span></em>, <em class="sig-param"><span class="n">directory</span></em>, <em class="sig-param"><span class="n">product</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.autoupdater.single_file_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download a single file, add it to the database
+and delete the file afterwards.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQLAlchemy Session</p></li>
+<li><p><strong>product_file</strong> (<em>dict</em>) – Metadata of a single product file
+as received from sentinal5dl.search.</p></li>
+<li><p><strong>directory</strong> (<em>string</em>) – Directory to download file to.</p></li>
+<li><p><strong>product</strong> (<em>dict</em>) – Type of the processed product.
+An entry of emissionsapi.db.products.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-emissionsapi.config">
 <span id="emissionsapi-config-module"></span><h2>emissionsapi.config module<a class="headerlink" href="#module-emissionsapi.config" title="Permalink to this headline">¶</a></h2>
-<p>Load and handle Emission API configuration.</p>
-<dl class="function">
+<p>Load and handle Emissions API configuration.</p>
+<dl class="py function">
 <dt id="emissionsapi.config.config">
-<code class="sig-prename descclassname">emissionsapi.config.</code><code class="sig-name descname">config</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.config.config" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">emissionsapi.config.</code><code class="sig-name descname">config</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.config.config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a specific configuration value or the whole configuration, loading
 the configuration file if it was not before.</p>
 <dl class="field-list simple">
@@ -179,7 +258,7 @@ the configuration file if it was not before.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="emissionsapi.config.configuration_file">
 <code class="sig-prename descclassname">emissionsapi.config.</code><code class="sig-name descname">configuration_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.config.configuration_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the best match for the configuration file.  The configuration file
@@ -196,80 +275,37 @@ locations taken into consideration are (in this particular order):</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="emissionsapi.config.update_configuration">
 <code class="sig-prename descclassname">emissionsapi.config.</code><code class="sig-name descname">update_configuration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.config.update_configuration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update configuration.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-emissionsapi.country_bounding_boxes">
-<span id="emissionsapi-country-bounding-boxes-module"></span><h2>emissionsapi.country_bounding_boxes module<a class="headerlink" href="#module-emissionsapi.country_bounding_boxes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="emissionsapi-country-shapes-module">
+<h2>emissionsapi.country_shapes module<a class="headerlink" href="#emissionsapi-country-shapes-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-emissionsapi.db">
 <span id="emissionsapi-db-module"></span><h2>emissionsapi.db module<a class="headerlink" href="#module-emissionsapi.db" title="Permalink to this headline">¶</a></h2>
 <p>Database layer for the Emmission API.</p>
-<dl class="class">
-<dt id="emissionsapi.db.Carbonmonoxide">
-<em class="property">class </em><code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">Carbonmonoxide</code><span class="sig-paren">(</span><em class="sig-param">value</em>, <em class="sig-param">longitude</em>, <em class="sig-param">latitude</em>, <em class="sig-param">timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.Carbonmonoxide" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></code></p>
-<p>ORM object for carbon monoxide point</p>
-<dl class="attribute">
-<dt id="emissionsapi.db.Carbonmonoxide.geom">
-<code class="sig-name descname">geom</code><a class="headerlink" href="#emissionsapi.db.Carbonmonoxide.geom" title="Permalink to this definition">¶</a></dt>
-<dd><p>Location (PostGis type)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="emissionsapi.db.Carbonmonoxide.id">
-<code class="sig-name descname">id</code><a class="headerlink" href="#emissionsapi.db.Carbonmonoxide.id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Data sample identifier (primary key)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="emissionsapi.db.Carbonmonoxide.timestamp">
-<code class="sig-name descname">timestamp</code><a class="headerlink" href="#emissionsapi.db.Carbonmonoxide.timestamp" title="Permalink to this definition">¶</a></dt>
-<dd><p>Timestamp of measurement</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="emissionsapi.db.Carbonmonoxide.value">
-<code class="sig-name descname">value</code><a class="headerlink" href="#emissionsapi.db.Carbonmonoxide.value" title="Permalink to this definition">¶</a></dt>
-<dd><p>Carbon monoxide value</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="emissionsapi.db.File">
-<em class="property">class </em><code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">File</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.File" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Base</span></code></p>
-<p>ORM object for the nc files.</p>
-<dl class="attribute">
-<dt id="emissionsapi.db.File.filename">
-<code class="sig-name descname">filename</code><a class="headerlink" href="#emissionsapi.db.File.filename" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of processed data file</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="emissionsapi.db.get_points">
-<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">get_points</code><span class="sig-paren">(</span><em class="sig-param">session</em>, <em class="sig-param">polygon=None</em>, <em class="sig-param">begin=None</em>, <em class="sig-param">end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.get_points" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get all points filtered by time and location.</p>
+<dl class="py function">
+<dt id="emissionsapi.db.filter_query">
+<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">filter_query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query</span></em>, <em class="sig-param"><span class="n">tbl</span></em>, <em class="sig-param"><span class="n">wkt</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">distance</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">begin</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.filter_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter query by time and location.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQL Alchemy Session</p></li>
-<li><p><strong>polygon</strong> (<em>geoalchemy2.WKTElement</em><em>, </em><em>optional</em>) – Polygon specifying an area in which to search for points.
-Defaults to None.</p></li>
+<li><p><strong>query</strong> (<em>sqlalchemy.orm.Query</em>) – SQLAlchemy Query</p></li>
+<li><p><strong>tbl</strong> (<em>sqlalchemy.sql.schema.Table</em>) – Table to get data from</p></li>
+<li><p><strong>wkt</strong> (<em>geoalchemy2.WKTElement</em><em>, </em><em>optional</em>) – WKT Element specifying an area in which to search for points,
+defaults to None.</p></li>
+<li><p><strong>distance</strong> (<em>float</em><em>, </em><em>optional</em>) – Distance as defined in PostGIS’ <a class="reference external" href="https://postgis.net/docs/ST_DWithin.html">ST_DWithin</a> function.</p></li>
 <li><p><strong>begin</strong> (<em>datetime.datetime</em><em>, </em><em>optional</em>) – Get only points after this timestamp, defaults to None</p></li>
-<li><p><strong>end</strong> (<em>Get only points before this timestamp</em><em>, </em><em>optional</em>) – datetime.datetime, defaults to None</p></li>
+<li><p><strong>end</strong> (<em>datetime.datetime</em><em>, </em><em>optional</em>) – Get only points before this timestamp, defaults to None</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>SQLAlchemy Query with tuple of Carbonmonoxide object,
-longitude and latitude.</p>
+<dd class="field-even"><p>SQLAlchemy Query filtered by time and location.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>sqlalchemy.orm.query.Query</p>
@@ -277,7 +313,71 @@ longitude and latitude.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
+<dt id="emissionsapi.db.get_averages">
+<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">get_averages</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session</span></em>, <em class="sig-param"><span class="n">tbl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.get_averages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get daily averages of all points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQLAlchemy Session</p></li>
+<li><p><strong>tbl</strong> (<em>sqlalchemy.sql.schema.Table</em>) – Table to get data from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SQLAlchemy Query with tuple of the daily carbon monoxide average,
+the maximal timestamp the minimal timestamp and the timestamp
+truncated by day.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sqlalchemy.orm.query.Query</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emissionsapi.db.get_data_range">
+<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">get_data_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session</span></em>, <em class="sig-param"><span class="n">tbl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.get_data_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the range of data currently available from the API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQLAlchemy Session</p></li>
+<li><p><strong>tbl</strong> (<em>sqlalchemy.sql.schema.Table</em>) – Table to get data from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SQLAlchemy Query requesting the minimum and maximum measurement
+time from all values.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sqlalchemy.orm.query.Query</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emissionsapi.db.get_points">
+<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">get_points</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session</span></em>, <em class="sig-param"><span class="n">tbl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.get_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQLAlchemy Session</p></li>
+<li><p><strong>tbl</strong> (<em>sqlalchemy.sql.schema.Table</em>) – Table to get data from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SQLAlchemy Query returning tuples of value, timestamp, longitude,
+and latitude.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sqlalchemy.orm.query.Query</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="emissionsapi.db.get_session">
 <code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">get_session</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.get_session" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a new session.</p>
@@ -288,26 +388,82 @@ longitude and latitude.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="emissionsapi.db.insert">
-<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param">session</em>, <em class="sig-param">data</em>, <em class="sig-param">table_name='carbonmonoxide'</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.insert" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt id="emissionsapi.db.get_statistics">
+<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">get_statistics</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session</span></em>, <em class="sig-param"><span class="n">tbl</span></em>, <em class="sig-param"><span class="n">interval_length</span><span class="o">=</span><span class="default_value">'day'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.get_statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get statistical data like amount, average, min, or max values for a
+specified time interval. Optionally, time and location filters can be
+applied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQLAlchemy Session</p></li>
+<li><p><strong>tbl</strong> (<em>sqlalchemy.sql.schema.Table</em>) – Table to get data from</p></li>
+<li><p><strong>interval_length</strong> (<em>str</em>) – Length of the time interval for which data is being
+aggregated as accepted by PostgreSQL’s <a class="reference external" href="https://postgresql.org/docs/9.1/functions-datetime.html">date_trunc</a>
+function like <code class="docutils literal notranslate"><span class="pre">day</span></code> or <code class="docutils literal notranslate"><span class="pre">week</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>SQLAlchemy Query requesting the following statistical values for
+the specified time interval:</p>
+<ul class="simple">
+<li><p>number of considered measurements</p></li>
+<li><p>average product value</p></li>
+<li><p>minimum product value</p></li>
+<li><p>maximum product value</p></li>
+<li><p>time of the first measurement</p></li>
+<li><p>time of the last measurement</p></li>
+<li><p>start of the interval</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sqlalchemy.orm.query.Query</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emissionsapi.db.insert_dataset">
+<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">insert_dataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session</span></em>, <em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">tbl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.insert_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Batch insert data into the database using PostGIS specific functions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQL Alchemy Session</p></li>
-<li><p><strong>data</strong> (<em>list</em>) – List of dictionaries with entries for timestamp, longitude,
-latitude and value</p></li>
-<li><p><strong>table_name</strong> (<em>str</em>) – Name of database table to insert data into. Defaults to
-table for carbon monoxide values.</p></li>
+<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQLAlchemy Session</p></li>
+<li><p><strong>data</strong> (<em>pandas.core.frame.DataFrame</em>) – DataFrame containing value, timestamp, longitude and latitude</p></li>
+<li><p><strong>tbl</strong> (<em>sqlalchemy.ext.declarative.api.DeclarativeMeta</em>) – Base class representing the database table for the data</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
+<dt id="emissionsapi.db.limit_offset_query">
+<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">limit_offset_query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query</span></em>, <em class="sig-param"><span class="n">limit</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.limit_offset_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply limit and offset to the query.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>sqlalchemy.orm.Query</em>) – SQLAlchemy Query</p></li>
+<li><p><strong>limit</strong> (<em>int</em><em>, </em><em>optional</em>) – Limit number of Items returned, defaults to None</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Specify the offset of the first hit to return,
+defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>SQLAlchemy Query with limit and offset applied.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sqlalchemy.orm.query.Query</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="emissionsapi.db.with_session">
-<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">with_session</code><span class="sig-paren">(</span><em class="sig-param">f</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.with_session" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">emissionsapi.db.</code><code class="sig-name descname">with_session</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.db.with_session" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wrapper for f to make a SQLAlchemy session present within the function</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -323,104 +479,106 @@ table for carbon monoxide values.</p></li>
 </dd></dl>
 
 </div>
-<div class="section" id="module-emissionsapi.download">
-<span id="emissionsapi-download-module"></span><h2>emissionsapi.download module<a class="headerlink" href="#module-emissionsapi.download" title="Permalink to this headline">¶</a></h2>
-<p>Module to filter and download the data from the ESA and store it locally.</p>
-<dl class="function">
-<dt id="emissionsapi.download.download">
-<code class="sig-prename descclassname">emissionsapi.download.</code><code class="sig-name descname">download</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.download.download" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download data files from ESA and store them in the configured storage
-directory.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="emissionsapi.download.filtered_download">
-<code class="sig-prename descclassname">emissionsapi.download.</code><code class="sig-name descname">filtered_download</code><span class="sig-paren">(</span><em class="sig-param">polygon=None</em>, <em class="sig-param">begin_ts=None</em>, <em class="sig-param">end_ts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.download.filtered_download" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download Sentinel 5 data from the ESA and store them in the data
-directory.
-The downloaded files are optionally filtered by location, start and end
-time.</p>
+<div class="section" id="module-emissionsapi.preprocess">
+<span id="emissionsapi-preprocess-module"></span><h2>emissionsapi.preprocess module<a class="headerlink" href="#module-emissionsapi.preprocess" title="Permalink to this headline">¶</a></h2>
+<p>Preprocess the locally stored data and store them in the database.</p>
+<dl class="py function">
+<dt id="emissionsapi.preprocess.list_ncfiles">
+<code class="sig-prename descclassname">emissionsapi.preprocess.</code><code class="sig-name descname">list_ncfiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session</span></em>, <em class="sig-param"><span class="n">storage</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.preprocess.list_ncfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>list all nc files in storage.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>polygon</strong> (<em>str</em><em>, </em><em>optional</em>) – WKT polygon specifying an area the data should intersect,
-defaults to None</p></li>
-<li><p><strong>begin_ts</strong> (<em>str</em><em>, </em><em>optional</em>) – ISO-8601 timestamp specifying the earliest sensing date,
-defaults to None</p></li>
-<li><p><strong>end_ts</strong> (<em>str</em><em>, </em><em>optional</em>) – ISO-8601 timestamp specifying the latest sensing date,
-defaults to None</p></li>
+<li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQLAlchemy Session</p></li>
+<li><p><strong>storage</strong> (<em>str</em>) – Path to the directory containing the <cite>*.nc</cite> files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Set of all unprocessed files</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emissionsapi.preprocess.main">
+<code class="sig-prename descclassname">emissionsapi.preprocess.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.preprocess.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Entrypoint for running this as a module or from the binary.
+Triggers the preprocessing of the data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="emissionsapi.preprocess.preprocess_file">
+<code class="sig-prename descclassname">emissionsapi.preprocess.</code><code class="sig-name descname">preprocess_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ncfile</span></em>, <em class="sig-param"><span class="n">tbl</span></em>, <em class="sig-param"><span class="n">product</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.preprocess.preprocess_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocess a single file and write it to the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ncfile</strong> (<em>str</em>) – path to the ncfile to preprocess</p></li>
+<li><p><strong>tbl</strong> (<em>sqlalchemy.sql.schema.Table</em>) – Table to to write data to</p></li>
+<li><p><strong>product</strong> (<em>str</em>) – The name of the product to load from the files</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-emissionsapi.preprocess">
-<span id="emissionsapi-preprocess-module"></span><h2>emissionsapi.preprocess module<a class="headerlink" href="#module-emissionsapi.preprocess" title="Permalink to this headline">¶</a></h2>
-<p>Preprocess the locally stored data and store them in the database.</p>
-<dl class="function">
-<dt id="emissionsapi.preprocess.entrypoint">
-<code class="sig-prename descclassname">emissionsapi.preprocess.</code><code class="sig-name descname">entrypoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.preprocess.entrypoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Entrypoint for running this as a module or from the binary.
-Triggers the preprocessing of the data.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="emissionsapi.preprocess.list_ncfiles">
-<code class="sig-prename descclassname">emissionsapi.preprocess.</code><code class="sig-name descname">list_ncfiles</code><span class="sig-paren">(</span><em class="sig-param">session</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.preprocess.list_ncfiles" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generator yielding all nc files in download path.</p>
-</dd></dl>
-
-<dl class="function">
+<dl class="py function">
 <dt id="emissionsapi.preprocess.write_to_database">
-<code class="sig-prename descclassname">emissionsapi.preprocess.</code><code class="sig-name descname">write_to_database</code><span class="sig-paren">(</span><em class="sig-param">session</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.preprocess.write_to_database" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">emissionsapi.preprocess.</code><code class="sig-name descname">write_to_database</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session</span></em>, <em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">tbl</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.preprocess.write_to_database" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write data to the PostGIS database</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>session</strong> (<em>sqlalchemy.orm.session.Session</em>) – SQLAlchemy Session</p></li>
-<li><p><strong>data</strong> (<em>emissionsapi.preprocess.Scan</em>) – Data to add to the database</p></li>
+<li><p><strong>tbl</strong> (<em>sqlalchemy.sql.schema.Table</em>) – Table to to write data to</p></li>
+<li><p><strong>data</strong> (<em>pandas.core.frame.DataFrame</em>) – Data to add to the database</p></li>
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the file being imported</p></li>
+<li><p><strong>tbl</strong> – Table to to write data to</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 </div>
-<div class="section" id="module-emissionsapi.web">
-<span id="emissionsapi-web-module"></span><h2>emissionsapi.web module<a class="headerlink" href="#module-emissionsapi.web" title="Permalink to this headline">¶</a></h2>
-<p>Web application to deliver the data stored in the database via an API to
-the users.</p>
-<dl class="function">
-<dt id="emissionsapi.web.entrypoint">
-<code class="sig-prename descclassname">emissionsapi.web.</code><code class="sig-name descname">entrypoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.web.entrypoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Entrypoint for running this as a module or from the binary.
-It starts the Connexion Debug Server. It is not meant to be used for
-production, but only during the development.</p>
+<div class="section" id="module-emissionsapi.utils">
+<span id="emissionsapi-utils-module"></span><h2>emissionsapi.utils module<a class="headerlink" href="#module-emissionsapi.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="emissionsapi.utils.RESTParamError">
+<em class="property">exception </em><code class="sig-prename descclassname">emissionsapi.utils.</code><code class="sig-name descname">RESTParamError</code><a class="headerlink" href="#emissionsapi.utils.RESTParamError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>User-specific exception, used in <a class="reference internal" href="#emissionsapi.utils.polygon_to_wkt" title="emissionsapi.utils.polygon_to_wkt"><code class="xref py py-func docutils literal notranslate"><span class="pre">polygon_to_wkt()</span></code></a>.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="emissionsapi.web.get_data">
-<code class="sig-prename descclassname">emissionsapi.web.</code><code class="sig-name descname">get_data</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.web.get_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="py function">
+<dt id="emissionsapi.utils.bounding_box_to_wkt">
+<code class="sig-prename descclassname">emissionsapi.utils.</code><code class="sig-name descname">bounding_box_to_wkt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lon1</span></em>, <em class="sig-param"><span class="n">lat1</span></em>, <em class="sig-param"><span class="n">lon2</span></em>, <em class="sig-param"><span class="n">lat2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.utils.bounding_box_to_wkt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a bounding box specified by its top-left and bottom-right
+coordinates to a wkt string defining a polygon.</p>
+</dd></dl>
 
-<dl class="function">
-<dt id="emissionsapi.web.parse_date">
-<code class="sig-prename descclassname">emissionsapi.web.</code><code class="sig-name descname">parse_date</code><span class="sig-paren">(</span><em class="sig-param">*keys</em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.web.parse_date" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function wrapper replacing string date arguments with
-datetime.datetime</p>
+<dl class="py function">
+<dt id="emissionsapi.utils.polygon_to_wkt">
+<code class="sig-prename descclassname">emissionsapi.utils.</code><code class="sig-name descname">polygon_to_wkt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">polygon</span></em><span class="sig-paren">)</span><a class="headerlink" href="#emissionsapi.utils.polygon_to_wkt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a list of points to a WKT string defining a polygon.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>keys</strong> (<em>list</em>) – keys to be parsed and replaced</p>
+<dd class="field-odd"><p><strong>polygon</strong> (<em>list</em>) – List of values with every pair of values representing a
+consecutive vertex of the polygon.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>wrapper function</p>
+<dd class="field-even"><p>WKT defining the polygon.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>func</p>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
+</div>
+<div class="section" id="emissionsapi-web-module">
+<h2>emissionsapi.web module<a class="headerlink" href="#emissionsapi-web-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-emissionsapi">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-emissionsapi" title="Permalink to this headline">¶</a></h2>
@@ -453,7 +611,7 @@ data analysis and without having to process terabytes of data.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="database.html" class="btn btn-neutral float-left" title="Database" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -462,11 +620,19 @@ data analysis and without having to process terabytes of data.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019 The Emissions API Developers (https://emissions-api.org)
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -477,7 +643,6 @@ data analysis and without having to process terabytes of data.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

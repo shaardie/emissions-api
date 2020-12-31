@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to Emissions API’s documentation! &mdash; Emissions API  documentation</title>
+  <title>Development &mdash; Emissions API  documentation</title>
   
 
   
@@ -35,7 +35,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation" href="installation.html" /> 
+    <link rel="next" title="Database" href="database.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -49,7 +50,7 @@
           
 
           
-            <a href="#" class="icon icon-home" alt="Documentation Home"> Emissions API
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Emissions API
           
 
           
@@ -81,9 +82,12 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="emissionsapi.html">Python API</a></li>
 </ul>
@@ -101,7 +105,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Emissions API</a>
+          <a href="index.html">Emissions API</a>
         
       </nav>
 
@@ -130,15 +134,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Welcome to Emissions API’s documentation!</li>
+      <li>Development</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/development.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -151,44 +155,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-emissions-api-s-documentation">
-<h1>Welcome to Emissions API’s documentation!<a class="headerlink" href="#welcome-to-emissions-api-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#linux-fedora-31">Linux (Fedora 31)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="development.html#dependencies">Dependencies</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="database.html#database-migration">Database Migration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="emissionsapi.html">Python API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="emissionsapi.html#module-emissionsapi.autoupdater">emissionsapi.autoupdater module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emissionsapi.html#module-emissionsapi.config">emissionsapi.config module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emissionsapi.html#emissionsapi-country-shapes-module">emissionsapi.country_shapes module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emissionsapi.html#module-emissionsapi.db">emissionsapi.db module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emissionsapi.html#module-emissionsapi.preprocess">emissionsapi.preprocess module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emissionsapi.html#module-emissionsapi.utils">emissionsapi.utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emissionsapi.html#emissionsapi-web-module">emissionsapi.web module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="emissionsapi.html#module-emissionsapi">Module contents</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="development">
+<h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>For dependencies in this project we are following the guidelines from the <a class="reference external" href="https://packaging.python.org/discussions/install-requires-vs-requirements/">Python Packaging Guide</a>.</p>
+<p>So in detail we are using the <cite>install_requires</cite> in the <a class="reference external" href="https://github.com/emissions-api/emissions-api/blob/master/setup.py">setup.py</a> to specify a list of dependencies this <em>project minimally needs to run correctly</em>.
+Whereas in the <a class="reference external" href="https://github.com/emissions-api/emissions-api/blob/master/requirements.txt">requirements.txt</a> we define the <em>complete Python environment</em> with <em>pinned versions for the purpose of achieving repeatable installations</em>.
+So the <a class="reference external" href="https://github.com/emissions-api/emissions-api/blob/master/requirements.txt">requirements.txt</a> also includes the dependencies of the dependencies and the tools we are using for our setup.</p>
+<p>So what has to be done, if you want to add a new dependency?
+Well simply try to follow the guideline in the <a class="reference external" href="https://packaging.python.org/discussions/install-requires-vs-requirements/">Python Packaging Guide</a>.</p>
+<p>Also if you want to update the <a class="reference external" href="https://github.com/emissions-api/emissions-api/blob/master/requirements.txt">requirements.txt</a> and don’t know how, the following steps might be handy.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create temporary virtual environment and install the current requirements</span>
+python3 -m venv /tmp/env
+. /tmp/env/bin/activate
+pip install -r requirements.txt
+<span class="c1"># Install your new fancy package</span>
+pip install my-fancy-package
+<span class="c1"># Update the whole list of dependencies</span>
+pip freeze &gt; requirements.txt
+</pre></div>
 </div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
 </div>
 
 
@@ -199,8 +187,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="database.html" class="btn btn-neutral float-right" title="Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,6 +1,14 @@
 Python API
 ==========
 
+emissionsapi.autoupdater module
+-------------------------------
+
+.. automodule:: emissionsapi.autoupdater
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 emissionsapi.config module
 --------------------------
 
@@ -9,10 +17,10 @@ emissionsapi.config module
    :undoc-members:
    :show-inheritance:
 
-emissionsapi.country\_bounding\_boxes module
+emissionsapi.country_shapes module
 --------------------------------------------
 
-.. automodule:: emissionsapi.country_bounding_boxes
+.. automodule:: emissionsapi.country_shapes
    :members:
    :undoc-members:
    :show-inheritance:
@@ -25,18 +33,18 @@ emissionsapi.db module
    :undoc-members:
    :show-inheritance:
 
-emissionsapi.download module
-----------------------------
-
-.. automodule:: emissionsapi.download
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 emissionsapi.preprocess module
 ------------------------------
 
 .. automodule:: emissionsapi.preprocess
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+emissionsapi.utils module
+-------------------------
+
+.. automodule:: emissionsapi.utils
    :members:
    :undoc-members:
    :show-inheritance:
